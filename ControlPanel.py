@@ -26,11 +26,11 @@ class control_panel:
             location='home'
             new_device=Device(location,group_name,device_type,device_name)
             self.groups[group_name].append(new_device)
-            print('f'Device {device_name} successfully created in group {group_name} DONE!!')
+            print(f'Device {device_name} successfully created in group {group_name} DONE!!')
         else:
-            print(f'Group {group_name} doesn't exist.Please create it first')
+            print(f"Group {group_name} doesn't exist.Please create it first")
             
-  #mr: این دو👆🏻 کد پرینت اضافه شد
+#mr: این دو👆🏻 کد پرینت اضافه شد
 
               
     def create_multiple_device(self,group_name,device_type,device_number):
