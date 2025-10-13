@@ -26,14 +26,44 @@
         else:
             print('No groups found')
 
-    def get_status_in_group(self, group_name):
+    def get_status_in_group(self,group_name):
         if group_name in self.groups:
             devices=self.groups[group_name]
-            if ..................................
-  #mr: help
+            if not devices:
+                print(f'No devices found in group {group_name}')
+                return[]
+            result=[]
+            for device in devices:
+               if device.get_status():
+                   st='on'
+               else:
+                   st='off'
+                print(f'device {device.device_name} is {st}')
+                result.append((device.device_name, st))
+            print('Status checked successfully')
+            return result
+        else:
+            print(f'Group {group_name} doesn't exist. Please create it first')
+            return[]
 
-    def get_status_in_device_type(self, dvice_type):
-  #mr: help
+    def get_status_in_device_type(self,dvice_type):
+        result=[]
+        for group_name, devices in self.groups.items():
+            for device in devices:
+                if device.device_type==device_type:
+                    if device.get_status():
+                        st='on'
+                    else:
+                        st='off'
+                    print(f'device {device.device_name} in group {group_name} is {st}')
+                    result.append((group_name, device.device_name, st))
+                    found_any=True
+        if found_any:
+            print('Status checked successfully')
+            return result
+        else:
+            print(f'No device found for type {dvice_type}')
+            return[]
 
 
     def create_sensor(self):
